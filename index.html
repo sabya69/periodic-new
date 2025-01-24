@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Periodic Table Program</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .element-details {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modern Periodic Table Program</h1>
+    <p>You can look up elements by their atomic number.</p>
+    <input type="number" id="atomicNumber" placeholder="Enter atomic number (1-20)" min="1" max="20">
+    <button onclick="getElement()">Get Element</button>
+    <div id="elementDetails" class="element-details"></div>
+
+    <script>
+        class Element {
+            constructor(atomicNumber, symbol, name, group) {
+                this.atomicNumber = atomicNumber;
+                this.symbol = symbol;
+                this.name = name;
+                this.group = group;
+            }
+
+            displayElement() {
+                return `
+                    <p><strong>Element Details:</strong></p>
+                    <p>Atomic Number: ${this.atomicNumber}</p>
+                    <p>Symbol: ${this.symbol}</p>
+                    <p>Name: ${this.name}</p>
+                    <p>Group: ${this.group}</p>
+                `;
+            }
+        }
+
+        function getElement() {
+            const atomicNumber = parseInt(document.getElementById('atomicNumber').value);
+            let element;
+
+            switch (atomicNumber) {
+                case 1:
+                    element = new Element(1, "H", "Hydrogen", "Nonmetal");
+                    break;
+                case 2:
+                    element = new Element(2, "He", "Helium", "Noble Gas");
+                    break;
+                case 3:
+                    element = new Element(3, "Li", "Lithium", "Alkali Metal");
+                    break;
+                case 4:
+                    element = new Element(4, "Be", "Beryllium", "Alkaline Earth Metal");
+                    break;
+                case 5:
+                    element = new Element(5, "B", "Boron", "Metalloid");
+                    break;
+                case 6:
+                    element = new Element(6, "C", "Carbon", "Nonmetal");
+                    break;
+                case 7:
+                    element = new Element(7, "N", "Nitrogen", "Nonmetal");
+                    break;
+                case 8:
+                    element = new Element(8, "O", "Oxygen", "Nonmetal");
+                    break;
+                case 9:
+                    element = new Element(9, "F", "Fluorine", "Halogen");
+                    break;
+                case 10:
+                    element = new Element(10, "Ne", "Neon", "Noble Gas");
+                    break;
+                case 11:
+                    element = new Element(11, "Na", "Sodium", "Alkali Metal");
+                    break;
+                case 12:
+                    element = new Element(12, "Mg", "Magnesium", "Alkaline Earth Metal");
+                    break;
+                case 13:
+                    element = new Element(13, "Al", "Aluminium", "Post-Transition Metal");
+                    break;
+                case 14:
+                    element = new Element(14, "Si", "Silicon", "Metalloid");
+                    break;
+                case 15:
+                    element = new Element(15, "P", "Phosphorus", "Nonmetal");
+                    break;
+                case 16:
+                    element = new Element(16, "S", "Sulfur", "Nonmetal");
+                    break;
+                case 17:
+                    element = new Element(17, "Cl", "Chlorine", "Halogen");
+                    break;
+                case 18:
+                    element = new Element(18, "Ar", "Argon", "Noble Gas");
+                    break;
+                case 19:
+                    element = new Element(19, "K", "Potassium", "Alkali Metal");
+                    break;
+                case 20:
+                    element = new Element(20, "Ca", "Calcium", "Alkaline Earth Metal");
+                    break;
+                default:
+                    document.getElementById('elementDetails').innerHTML = "Invalid atomic number. Please enter a value between 1 and 20.";
+                    return;
+            }
+
+            document.getElementById('elementDetails').innerHTML = element.displayElement();
+        }
+    </script>
+</body>
+</html>
